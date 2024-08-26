@@ -1,0 +1,5 @@
+Meu nome é Maria Julia Germano, tenho 18 anos e atualmente estou no segundo período do curso de Sistemas de Informação na Cesar School. Após concluir o ensino médio, mergulhei de cabeça no universo da tecnologia e estou entusiasmada com o que essa área tem a oferecer.
+
+Recentemente, tive a oportunidade de iniciar um estágio em uma empresa de inteligência de mercado imobiliário. Nesse papel, estou me envolvendo no desenvolvimento de software voltado para ciência de dados. Utilizo ferramentas e tecnologias como Docker, Git, PostgreSQL e diversas bibliotecas do Python, incluindo Dash, Streamlit, Plotly, Folium, FastAPI e Pandas.
+
+Embora tenha começado minha jornada na tecnologia há pouco tempo, a experiência tem sido extremamente gratificante. Estou cada vez mais apaixonada por essa área e ansiosa para continuar aprendendo e crescendo profissionalmente.
