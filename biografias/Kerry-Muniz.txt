@@ -1,0 +1,9 @@
+Me chamo Kerry Muniz Santos, tenho 19 anos, sou aluno do 2º período do curso de Sistemas de Informação. 
+Tenho contato com programação a 1 ano e 3 meses, tendo estagiado em 2 empresas, sendo a 2ª
+a que estou atuando no momento. Nela tenho a oportunidade de ser um desenvolvedor backend
+utilizando php e laravel, seu framework, além de trabalhar com banco de dados e consultas sql.
+
+Estou cada vez mais desenvolvendo minhas habilidades de hard e soft skills e o mais importante,
+adiquirindo experiência(XP) em minha carreira profissional. Tenho uma visão um tanto quanto 
+empreendedora olhando sempre para frente e venho ganhando conhecimento com projetos pessoais,
+da Cesar School e com meu trabalho/estágio também.
