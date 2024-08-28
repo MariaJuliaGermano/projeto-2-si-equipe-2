@@ -23,7 +23,7 @@ Cada desenvolvedor mantém uma cópia completa do repositório, com todo o hist�
 2. **Pull Request**:
    - Será aberto um Pull Request da branch de funcionalidade para a `desenv`.
    - As mudanças serão descritas de forma clara.
-   - Revisão: Pelo menos uma aprovação será necessária, que poderá ser realizada por qualquer membro da esquipe.
+   - Revisão: Pelo menos uma aprovação será necessária, que poderá ser realizada por qualquer membro da equipe.
 
 3. **Merge na desenv**:
    - Após aprovação do Pull Request, será feito o merge na `desenv`.
