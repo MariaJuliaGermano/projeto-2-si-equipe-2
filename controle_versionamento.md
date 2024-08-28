@@ -1,5 +1,9 @@
 # Fluxo de versionamento
 
+## Explicação inicial:
+Cada desenvolvedor mantém uma cópia completa do repositório, com todo o histórico de commits e branches.
+
+
 ## Estrutura de Branches
 
 - **`main`**: Código estável e pronto para produção. Não receber merges diretos.
