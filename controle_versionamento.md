@@ -7,10 +7,10 @@ Cada desenvolvedor mantém uma cópia completa do repositório, com todo o hist�
 ## Estrutura de Branches
 
 - **`main`**: Código estável e pronto para produção. Não receber merges diretos.
-- **`desenv`**: Integração de funcionalidades. Base para novas branches.
+- **`develop`**: Integração de funcionalidades. Base para novas branches.
 
 - **Feature Branches** (`feature/nome-da-funcionalidade`):
-  - Criação: `git checkout desenv` -> `git checkout -b feature/nome-da-funcionalidade`
+  - Criação: `git checkout develop` -> `git checkout -b feature/nome-da-funcionalidade`
   - Exemplo: `feature/autenticacao`, `feature/dashboard`
 
 ## Fluxo de Trabalho
@@ -21,17 +21,17 @@ Cada desenvolvedor mantém uma cópia completa do repositório, com todo o hist�
      - Tipos: `feat`, `fix`, `refactor`, `docs`, `style`, `test`
 
 2. **Pull Request**:
-   - Será aberto um Pull Request da branch de funcionalidade para a `desenv`.
+   - Será aberto um Pull Request da branch de funcionalidade para a `develop`.
    - As mudanças serão descritas de forma clara.
    - Revisão: Pelo menos uma aprovação será necessária, que poderá ser realizada por qualquer membro da equipe.
 
-3. **Merge na desenv**:
-   - Após aprovação do Pull Request, será feito o merge na `desenv`.
+3. **Merge na develop**:
+   - Após aprovação do Pull Request, será feito o merge na `develop`.
    - Se necessário, os conflitos terão que ser resolvidos.
 
 
 ## Resumindo
 
-- **Branches**: `main`, `desenv`, `feature/nome-da-funcionalidade`
+- **Branches**: `main`, `develop`, `feature/nome-da-funcionalidade`
 - **Commits**: `[Tipo]: Descrição`
 - **PRs**: Revisão obrigatória antes do merge.
