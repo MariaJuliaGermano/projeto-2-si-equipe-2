@@ -66,26 +66,40 @@
 
     <!-- Question Section -->
     <div class="question-section">
-        <div id="questions">
-            <!-- Perguntas 1 a 16 -->
-            <div class="question" id="question">
-                <h5 id="question-number">Questão 1.</h5>
-                <p class="question-title" id="question-title"></p>
+        <div id="answer-section">
+            <div id="questions">
+                <!-- Perguntas 1 a 16 -->
+                <div class="question" id="question">
+                    <h5 id="question-number">Questão 1.</h5>
+                    <p class="question-title" id="question-title"></p>
+                </div>
+            </div>
+
+        <!-- Opções de Resposta -->
+            <div class="options">
+                <span id="answer-text-left"></span>
+                <input type="radio" name="radio" id="answer-left" style="width: 30px; height: 30px;" />
+                <input type="radio" name="radio" id="answer-right" style="width: 30px; height: 30px;" />
+                <span id="answer-text-right"></span>
+            </div>
+
+            <!-- Botão Próximo / Finalizar -->
+            <div class="mt-4">
+                <button id="nextButton" class="btn btn-next" onclick="nextQuestion()">Próximo →</button>
             </div>
         </div>
 
-        <!-- Opções de Resposta -->
-        <div class="options">
-            <span id="answer-text-left"></span>
-            <input type="radio" name="answer-left" style="width: 30px; height: 30px;" />
-            <input type="radio" name="answer-right" style="width: 30px; height: 30px;" />
-            <span id="answer-text-right"></span>
+        <div class="mt-2" id="submit-section">
+            <div class="questions">
+                <p class="question-title" style="font-weight: bold">Teste Finalizado</p>
+            </div>
+            <form method="POST" action="{% url "home" %}" id="Send">
+                {% csrf_token %}
+                <input type="hidden" name="data" id="form-data">
+                <input type="submit" id="form-button" class="btn btn-next mt-0" value="Enviar">
+            </form>
         </div>
 
-        <!-- Botão Próximo / Finalizar -->
-        <div class="mt-4">
-            <button id="nextButton" class="btn btn-next" onclick="nextQuestion()">Próximo →</button>
-        </div>
     </div>
 
     <!-- Footer -->
