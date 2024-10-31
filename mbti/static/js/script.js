@@ -1,5 +1,6 @@
 // Variável para rastrear a pergunta atual
-let currentQuestion = 1;
+let currentQuestion = 0;
+let currentAnswer = 0;
 const totalQuestions = 16;
 let form_data = {}
 let data = JSON.parse(document.getElementById('received_data').textContent);
@@ -7,37 +8,28 @@ let data = JSON.parse(document.getElementById('received_data').textContent);
 
 function nextQuestion() {
     // Se já está na última pergunta e o botão foi clicado para finalizar, exibe o alerta e finaliza
-    console.log(data)
-    console.log("Passed")
-    if (currentQuestion > totalQuestions) {
-        alert("Teste finalizado! Verifique seus resultados.");
-        // Aqui você pode redirecionar para a página de resultados, se desejado
-        // window.location.href = "/resultados.html";
-        return;
+    currentAnswer++
+    let a1 = Object.values(data.questions[currentQuestion].responses)[0]
+    let a2 = Object.values(data.questions[currentQuestion].responses)[1]
+    if (a1[currentAnswer] == undefined) {
+        currentQuestion++
+        currentAnswer = 0
+        initializeQuestions()
     }
-    
-    document.getElementById(`question-${currentQuestion}`).innerHTML.textContent = "";
-    
-    // Incrementa o número da pergunta
-    currentQuestion++;
-    
-    // Exibe a próxima pergunta, se ainda houver
-    if (currentQuestion <= totalQuestions) {
-        document.getElementById(`question-${currentQuestion}`).style.display = "block";
-    }
-    
-    // Se estamos na última pergunta, altera o botão para "Finalizar teste"
-    if (currentQuestion === totalQuestions) {
-        document.getElementById("nextButton").innerText = "Finalizar teste";
-    }
+    console.log(a1)
+    document.getElementById("answer-text-left").innerHTML = a1[currentAnswer]
+    document.getElementById("answer-text-right").innerHTML = a2[currentAnswer]
 }
 
 // Função para inicializar a visibilidade das perguntas ao carregar a página
 function initializeQuestions() {
-    console.log(data.questions[0].question, typeof(data.questions[0].question))
-    document.getElementById("question-title").innerHTML = data.questions[0].question
-    document.getElementById("answer-text-left").innerHTML = data.questions[0].responses.E[0]
-    document.getElementById("answer-text-right").innerHTML = data.questions[0].responses.I[0]
+    console.log(data)
+    document.getElementById("question-number").innerHTML = "Questão "+(currentQuestion + 1)
+    document.getElementById("question-title").innerHTML = data.questions[currentQuestion].question
+    let a1 = Object.values(data.questions[currentQuestion].responses)[0]
+    let a2 = Object.values(data.questions[currentQuestion].responses)[1]
+    document.getElementById("answer-text-left").innerHTML = a1[0]
+    document.getElementById("answer-text-right").innerHTML = a2[0]
 }
 
 // Executa a função de inicialização ao carregar a tag (O json deve ser carregado antes desse script);
