@@ -11,5 +11,6 @@ def home(request):
         return render(request, 'teste_mbti/testepersonalidade.html', context=context)
     elif request.method == "POST":
         receivedData = request.POST["data"]
-        print("Incoming info: " + receivedData)
+        receivedData = receivedData.split(",")
+        print("Incoming info: " + receivedData[1])
         return HttpResponse(status=200)
