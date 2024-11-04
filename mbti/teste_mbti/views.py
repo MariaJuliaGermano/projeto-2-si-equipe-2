@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.conf import settings
 import json, os
 
@@ -13,4 +12,7 @@ def home(request):
         receivedData = request.POST["data"]
         receivedData = receivedData.split(",")
         print("Incoming info: " + receivedData[1])
-        return HttpResponse(status=200)
+        return redirect('results')
+
+def results(request):
+    return render(request, 'teste_mbti/resultado.html')
