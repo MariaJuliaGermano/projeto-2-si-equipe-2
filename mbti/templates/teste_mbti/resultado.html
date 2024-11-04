@@ -1,0 +1,145 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado MBTI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style_res.css' %}">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand mbti-logo" href="#">MBTI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><b>Seus resultados</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Teste de personalidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tipos de personalidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Equipe</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-icons">
+                <a href="#" class="icon-link me-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/24px-Flag_of_Brazil.svg.png" alt="Bandeira do Brasil" class="flag-icon">
+                    Português
+                </a>
+                <a href="#" class="icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 15 15">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+
+<div class="resultado-container">
+    <h1>O seu tipo de personalidade é:</h1>
+    <h1>Protagonista</h1>
+    <p>ENFJ-T</p>
+    
+    <div class="icone-personalidade">
+        <img src="{% static 'img/party.jpeg' %}" alt="Ícone ENFJ">
+    </div>
+
+    <div class="decoracao">
+        <div class="fogo-de-artificio"></div>
+        <div class="fogo-de-artificio"></div>
+        <div class="fogo-de-artificio"></div>
+    </div>
+
+    <div class="descricao">
+        <p>Confira a baixo mais informações!</p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <h5 class="text-center">1. Características da personalidade</h5>
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <p>
+                Como um ENFJ (Protagonista), você possui uma combinação única de carisma, empatia e idealismo que o destaca em qualquer multidão. Sua habilidade natural de inspirar e liderar os outros é igualada apenas pelo seu profundo desejo de causar um impacto positivo no mundo ao seu redor. Você tem uma capacidade incrível de entender as emoções e motivações das pessoas, frequentemente percebendo o que os outros precisam antes mesmo que eles percebam.
+            </p>
+            <p>
+                Seu dom para a comunicação permite que você articule suas ideias visionárias com paixão e convicção, atraindo os outros para sua órbita e motivando-os a se juntar à sua causa. Você prospera em conexões significativas e tem um talento notável para extrair o melhor daqueles ao seu redor. No entanto, sua natureza idealista às vezes pode decepcioná-lo quando a realidade não corresponde às suas altas expectativas.
+            </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="drake.jpeg" alt="Imagem de personalidade" class="img-fluid rounded">
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <!-- Barras de progresso -->
+        <div class="mb-3">
+            <label>Extrovertido</label>
+            <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 60%;">60%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Intuitivo</label>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;">50%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Analítico</label>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 56%;">56%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Planejador</label>
+            <div class="progress">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 62%;">62%</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Assertivo</label>
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 70%;">70%</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Avaliação -->
+    <div class="text-center mt-4">
+        <p>Curtiu? <br> Então avalie nosso site!</p>
+        <div class="stars">
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer class="text-center mt-4">
+        <p>&copy; 2024 MBTI Project</p>
+    </footer>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
