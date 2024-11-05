@@ -25,7 +25,7 @@
                         <a class="nav-link" href="#"><b>Seus resultados</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Teste de personalidade</a>
+                        <a class="nav-link" href="{% url 'home' %}">Teste de personalidade</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tipos de personalidade</a>
@@ -53,8 +53,8 @@
 
 <div class="resultado-container">
     <h1>O seu tipo de personalidade é:</h1>
-    <h1>Protagonista</h1>
-    <p>ENFJ-T</p>
+    <h1>{{ perfil }}</h1>
+    <p>{{ sigla }}</p>
     
     <div class="icone-personalidade">
         <img src="{% static 'img/party.jpeg' %}" alt="Ícone ENFJ">
@@ -76,10 +76,7 @@
     <div class="row mt-4">
         <div class="col-md-8">
             <p>
-                Como um ENFJ (Protagonista), você possui uma combinação única de carisma, empatia e idealismo que o destaca em qualquer multidão. Sua habilidade natural de inspirar e liderar os outros é igualada apenas pelo seu profundo desejo de causar um impacto positivo no mundo ao seu redor. Você tem uma capacidade incrível de entender as emoções e motivações das pessoas, frequentemente percebendo o que os outros precisam antes mesmo que eles percebam.
-            </p>
-            <p>
-                Seu dom para a comunicação permite que você articule suas ideias visionárias com paixão e convicção, atraindo os outros para sua órbita e motivando-os a se juntar à sua causa. Você prospera em conexões significativas e tem um talento notável para extrair o melhor daqueles ao seu redor. No entanto, sua natureza idealista às vezes pode decepcioná-lo quando a realidade não corresponde às suas altas expectativas.
+                Como um {{ sigla }} ({{ perfil }}), você é {{ descrição }}
             </p>
         </div>
         <div class="col-md-4 text-center">
@@ -92,31 +89,31 @@
         <div class="mb-3">
             <label>Extrovertido</label>
             <div class="progress">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 60%;">60%</div>
+                <div class="progress-bar bg-info" role="progressbar" style="width: {{ extrovertido }}%;">{{ extrovertido }}%</div>
             </div>
         </div>
         <div class="mb-3">
             <label>Intuitivo</label>
             <div class="progress">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;">50%</div>
+                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ intuitivo }}%;">{{ intuitivo }}%</div>
             </div>
         </div>
         <div class="mb-3">
             <label>Analítico</label>
             <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 56%;">56%</div>
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ analitico }}%;">{{ analitico }}%</div>
             </div>
         </div>
         <div class="mb-3">
             <label>Planejador</label>
             <div class="progress">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 62%;">62%</div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ planejador }}%;">{{ planejador }}%</div>
             </div>
         </div>
         <div class="mb-3">
             <label>Assertivo</label>
             <div class="progress">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 70%;">70%</div>
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ assertivo }}%;">{{ assertivo }}%</div>
             </div>
         </div>
     </div>

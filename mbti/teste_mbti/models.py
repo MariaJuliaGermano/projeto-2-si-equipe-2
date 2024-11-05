@@ -8,10 +8,11 @@ data = json.load(data)
 class respostas(models.Model):
 
     id = models.AutoField(primary_key=True)
-    pergunta_1 = models.TextField()
-    pergunta_2 = models.TextField()
-    pergunta_3 = models.TextField()
-    pergunta_4 = models.TextField()
+    pergunta_1 = models.TextField(max_length=11)
+    pergunta_2 = models.TextField(max_length=11)
+    pergunta_3 = models.TextField(max_length=13)
+    pergunta_4 = models.TextField(max_length=13)
+    perfil_MBTI = models.TextField(max_length=2)
 
     def __str__(self):
         return "Resposta"
