@@ -1,112 +1,65 @@
+{% extends 'teste_mbti/base.html' %}
+{% block conteudo %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Personalidade MBTI</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">MBTI</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Seus resultados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Teste de personalidade</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tipos de personalidade</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Equipe</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Português</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- Header -->
+<div class="header-section">
+    <h1>Faça seu teste de personalidade</h1>
+    <p>Realize sua pesquisa e se conheça melhor</p>
+</div>
 
-    <!-- Header -->
-    <div class="header-section">
-        <h1>Faça seu teste de personalidade</h1>
-        <p>Realize sua pesquisa e se conheça melhor</p>
+<!-- Info Boxes -->
+<div class="info-section">
+    <div class="info-box" style="background-color: #e0f7fa; border: 2px solid #4caf50;">
+        <h5><i class="fas fa-question-circle"></i> O QUE É</h5>
+        <p>O MBTI é um teste de personalidade que identifica as preferências e características de uma pessoa, classificando-a em um dos 16 tipos de personalidade.</p>
     </div>
+    <div class="info-box" style="background-color: #f1f8e9; border: 2px solid #4caf50;">
+        <h5><i class="fas fa-exclamation-circle"></i> COMO RESPONDER</h5>
+        <p>É possível responder um questionário de perguntas logo abaixo. Dessa forma, você conseguirá, ao final do teste, ver seus resultados na aba de "Seus resultados".</p>
+    </div>
+    <div class="info-box" style="background-color: #fce4ec; border: 2px solid #4caf50;">
+        <h5><i class="fas fa-check-circle"></i> RESULTADOS</h5>
+        <p>Na aba de resultados é possível encontrar sua personalidade e uma descrição breve. Também você irá visualizar um gráfico com índices percentuais de suas características.</p>
+    </div>
+</div>
 
-    <!-- Info Boxes -->
-    <div class="info-section">
-        <div class="info-box" style="background-color: #e0f7fa; border: 2px solid #4caf50;">
-            <h5><i class="fas fa-question-circle"></i> O QUE É</h5>
-            <p>O MBTI é um teste de personalidade que identifica as preferências e características de uma pessoa, classificando-a em um dos 16 tipos de personalidade.</p>
+<!-- Question Section -->
+<div class="question-section">
+    <div id="questions">
+        <!-- Perguntas 1 a 16 -->
+        <div class="question" id="question-1">
+            <h5>QUESTÃO 1</h5>
+            <p class="question-title">Você se considera uma pessoa extrovertida?</p>
         </div>
-        <div class="info-box" style="background-color: #f1f8e9; border: 2px solid #4caf50;">
-            <h5><i class="fas fa-exclamation-circle"></i> COMO RESPONDER</h5>
-            <p>É possível responder um questionário de perguntas logo abaixo. Dessa forma, você conseguirá, ao final do teste, ver seus resultados na aba de "Seus resultados".</p>
+        <div class="question" id="question-2" style="display: none;">
+            <h5>QUESTÃO 2</h5>
+            <p class="question-title">Você prefere planejar suas atividades com antecedência?</p>
         </div>
-        <div class="info-box" style="background-color: #fce4ec; border: 2px solid #4caf50;">
-            <h5><i class="fas fa-check-circle"></i> RESULTADOS</h5>
-            <p>Na aba de resultados é possível encontrar sua personalidade e uma descrição breve. Também você irá visualizar um gráfico com índices percentuais de suas características.</p>
+        <div class="question" id="question-3" style="display: none;">
+            <h5>QUESTÃO 3</h5>
+            <p class="question-title">Você costuma tomar decisões com base em lógica e fatos?</p>
+        </div>
+        <!-- Continue preenchendo até a pergunta 16 -->
+        <div class="question" id="question-16" style="display: none;">
+            <h5>QUESTÃO 16</h5>
+            <p class="question-title">Você prefere manter suas opções em aberto?</p>
         </div>
     </div>
 
-    <!-- Question Section -->
-    <div class="question-section">
-        <div id="questions">
-            <!-- Perguntas 1 a 16 -->
-            <div class="question" id="question-1">
-                <h5>QUESTÃO 1</h5>
-                <p class="question-title">Você se considera uma pessoa extrovertida?</p>
-            </div>
-            <div class="question" id="question-2" style="display: none;">
-                <h5>QUESTÃO 2</h5>
-                <p class="question-title">Você prefere planejar suas atividades com antecedência?</p>
-            </div>
-            <div class="question" id="question-3" style="display: none;">
-                <h5>QUESTÃO 3</h5>
-                <p class="question-title">Você costuma tomar decisões com base em lógica e fatos?</p>
-            </div>
-            <!-- Continue preenchendo até a pergunta 16 -->
-            <div class="question" id="question-16" style="display: none;">
-                <h5>QUESTÃO 16</h5>
-                <p class="question-title">Você prefere manter suas opções em aberto?</p>
-            </div>
-        </div>
-
-        <!-- Opções de Resposta -->
-        <div class="options">
-            <span>Concordo</span>
-            <input type="radio" name="answer" style="width: 30px; height: 30px;" />
-            <input type="radio" name="answer" style="width: 30px; height: 30px;" />
-            <span>Discordo</span>
-        </div>
-
-        <!-- Botão Próximo / Finalizar -->
-        <div class="mt-4">
-            <button id="nextButton" class="btn btn-next" onclick="nextQuestion()">Próximo →</button>
-        </div>
+    <!-- Opções de Resposta -->
+    <div class="options">
+        <span>Concordo</span>
+        <input type="radio" name="answer" style="width: 30px; height: 30px;" />
+        <input type="radio" name="answer" style="width: 30px; height: 30px;" />
+        <span>Discordo</span>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        ©2024 MBTI Project
-    </footer>
+    <!-- Botão Próximo / Finalizar -->
+    <div class="mt-4">
+        <button id="nextButton" class="btn btn-next" onclick="nextQuestion()">Próximo →</button>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>
+{% endblock %}
