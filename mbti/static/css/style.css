@@ -133,8 +133,8 @@ footer {
 
 .cadastro-page .container {
     display: flex;
-    width: 100vw; /* Ocupa toda a largura da tela */
-    height: 100vh; /* Ocupa toda a altura da tela */
+    width: 100vw; 
+    height: 100vh; 
 }
 
 .cadastro-page .left-section {
@@ -173,18 +173,18 @@ footer {
     font-weight: bold;
     margin-bottom: 20px;
     color: #000;
-    text-align: center; /* Centraliza o texto "Cadastro" */
+    text-align: center; 
     position: relative;
 }
 
 .cadastro-page .right-section h2::after {
     content: "";
     display: block;
-    width: 100%; /* Barra verde com a mesma largura da palavra "Cadastro" */
-    max-width: 160px; /* Ajuste o tamanho máximo da linha verde */
+    width: 100%;
+    max-width: 160px; 
     height: 3px;
     background-color: #2d6a4f;
-    margin: 0 auto; /* Centraliza a barra abaixo do título */
+    margin: 0 auto;
     margin-top: 5px;
 }
 
@@ -194,8 +194,8 @@ footer {
 }
 
 .cadastro-page .form-group input {
-    flex: 1; /* Permite que os inputs dentro da .form-group compartilhem o espaço */
-    max-width: calc(50% - 5px); /* Garante que cada campo ocupe 50% menos o gap */
+    flex: 1; 
+    max-width: calc(50% - 5px);
 }
 
 .cadastro-page form {
