@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro MBTI</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="login-page">
+{% extends 'teste_mbti/base.html' %}
+{% block conteudo %}
+{% load static %}
+
+<div class="login-page">
     <div class="container">
         <div class="left-section">
             <h1>MBTI</h1>
@@ -25,5 +21,6 @@
             <p>Já possui conta? <a href="#">Faça seu Login</a></p>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+{% endblock %}
