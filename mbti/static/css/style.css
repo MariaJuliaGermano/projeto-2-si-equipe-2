@@ -11,7 +11,7 @@ body {
 }
 
 .header-section {
-    background-color: #4caf50;
+    background-color: #418b43;
     color: white;
     padding: 5rem 0;
     text-align: center;
@@ -56,7 +56,7 @@ body {
 }
 
 .info-box i {
-    color: #4caf50;
+    color: #418b43;
     margin-right: 0.5rem;
 }
 
@@ -86,7 +86,7 @@ body {
 
 .options span {
     font-weight: bold;
-    color: #4caf50;
+    color: #418b43;
 }
 
 .options input[type="radio"] {
@@ -138,7 +138,7 @@ footer {
 }
 
 .cadastro-login-page .left-section {
-    background-color: #2d6a4f;
+    background-color: #418b43;
     color: white;
     padding: 40px;
     width: 45%;
@@ -187,7 +187,7 @@ footer {
     width: 100%;
     max-width: 100px; 
     height: 3px;
-    background-color: #2d6a4f;
+    background-color: #418b43;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -198,7 +198,7 @@ footer {
     width: 100%;
     max-width: 160px; 
     height: 3px;
-    background-color: #2d6a4f;
+    background-color: #418b43;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -238,7 +238,7 @@ footer {
 }
 
 .cadastro-login-page .form-footer a {
-    color: #2d6a4f;
+    color: #418b43;
     font-weight: bold;
     text-decoration: none;
 }
@@ -248,7 +248,7 @@ footer {
 }
 
 .botão-enviar {
-    background-color: #2d6a4f;
+    background-color: #418b43; 
     color: white;
     padding: 10px;
     font-size: 1rem;
@@ -260,7 +260,7 @@ footer {
 }
 
 .botão-enviar:hover {
-    background-color: #1b4332;
+    background-color: #366b38;
 }
 
 
