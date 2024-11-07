@@ -111,32 +111,33 @@ footer {
     margin-top: auto;
     border-top: 1px solid #ddd;
 }
-.login-page * {
+
+.cadastro-page * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-.login-page {
+.cadastro-page {
+    margin: 0px;
+    padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
     background-color: #f5f5f5;
-}
-
-.login-page .container {
-    display: flex;
-    width: 700px;
-    height: 450px; 
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-page .left-section {
+.cadastro-page .container {
+    display: flex;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+}
+
+.cadastro-page .left-section {
     background-color: #2d6a4f;
     color: white;
     padding: 40px;
@@ -146,46 +147,92 @@ footer {
     justify-content: center;
 }
 
-.login-page .left-section h1 {
+.cadastro-page .left-section h1 {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.login-page .left-section p {
+.cadastro-page .left-section p {
     font-size: 1.2rem;
     margin-top: 10px;
+    line-height: 1.4;
 }
 
-.login-page .right-section {
+.cadastro-page .right-section {
     background-color: #f3f3f3;
     padding: 40px;
     width: 55%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
 }
 
-.login-page .right-section h2 {
+.cadastro-page .right-section h2 {
     font-size: 2rem;
-    margin-bottom: 10px; 
-    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+    text-align: center; /* Centraliza o texto "Cadastro" */
+    position: relative;
 }
 
-.login-page form {
+.cadastro-page .right-section h2::after {
+    content: "";
+    display: block;
+    width: 100%; /* Barra verde com a mesma largura da palavra "Cadastro" */
+    max-width: 160px; /* Ajuste o tamanho máximo da linha verde */
+    height: 3px;
+    background-color: #2d6a4f;
+    margin: 0 auto; /* Centraliza a barra abaixo do título */
+    margin-top: 5px;
+}
+
+.cadastro-page .form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.cadastro-page .form-group input {
+    flex: 1; /* Permite que os inputs dentro da .form-group compartilhem o espaço */
+    max-width: calc(50% - 5px); /* Garante que cada campo ocupe 50% menos o gap */
+}
+
+.cadastro-page form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px; 
+    gap: 15px;
 }
 
-.login-page form input {
-    margin-bottom: 10px;
+.cadastro-page form input {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    color: #888;
 }
 
-.login-page form button {
+.cadastro-page form input::placeholder {
+    color: #888;
+}
+
+.cadastro-page .form-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.cadastro-page .form-footer a {
+    color: #2d6a4f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cadastro-page .form-footer a:hover {
+    text-decoration: underline;
+}
+
+.cadastro-page .botão-cadastrar {
     background-color: #2d6a4f;
     color: white;
     padding: 10px;
@@ -193,24 +240,10 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.login-page form button:hover {
-    background-color: #1b4332;
-}
-
-.login-page p {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 10px; /* Reduzido para economizar espaço */
-}
-
-.login-page p a {
-    color: #2d6a4f;
-    text-decoration: none;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.login-page p a:hover {
-    text-decoration: underline;
+.cadastro-page .botão-cadastrar:hover {
+    background-color: #1b4332;
 }
