@@ -112,14 +112,14 @@ footer {
     border-top: 1px solid #ddd;
 }
 
-.cadastro-page * {
+.cadastro-login-page * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-.cadastro-page {
+.cadastro-login-page {
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -131,13 +131,13 @@ footer {
     overflow: hidden;
 }
 
-.cadastro-page .container {
+.cadastro-login-page .container {
     display: flex;
     width: 100vw; 
     height: 100vh; 
 }
 
-.cadastro-page .left-section {
+.cadastro-login-page .left-section {
     background-color: #2d6a4f;
     color: white;
     padding: 40px;
@@ -147,18 +147,18 @@ footer {
     justify-content: center;
 }
 
-.cadastro-page .left-section h1 {
+.cadastro-login-page .left-section h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-.cadastro-page .left-section p {
+.cadastro-login-page .left-section p {
     font-size: 1.2rem;
     margin-top: 10px;
     line-height: 1.4;
 }
 
-.cadastro-page .right-section {
+.cadastro-login-page .right-section {
     background-color: #f3f3f3;
     padding: 40px;
     width: 55%;
@@ -168,7 +168,7 @@ footer {
     position: relative;
 }
 
-.cadastro-page .right-section h2 {
+.cadastro-login-page .right-section h2 {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
@@ -177,7 +177,7 @@ footer {
     position: relative;
 }
 
-.cadastro-page .right-section h2::after {
+.cadastro-login-page .right-section h2::after {
     content: "";
     display: block;
     width: 100%;
@@ -188,23 +188,23 @@ footer {
     margin-top: 5px;
 }
 
-.cadastro-page .form-group {
+.cadastro-login-page .form-group {
     display: flex;
     gap: 10px;
 }
 
-.cadastro-page .form-group input {
+.cadastro-login-page .form-group input {
     flex: 1; 
     max-width: calc(50% - 5px);
 }
 
-.cadastro-page form {
+.cadastro-login-page form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.cadastro-page form input {
+.cadastro-login-page form input {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -212,27 +212,27 @@ footer {
     color: #888;
 }
 
-.cadastro-page form input::placeholder {
+.cadastro-login-page form input::placeholder {
     color: #888;
 }
 
-.cadastro-page .form-footer {
+.cadastro-login-page .form-footer {
     text-align: center;
     font-size: 0.9rem;
     color: #888;
 }
 
-.cadastro-page .form-footer a {
+.cadastro-login-page .form-footer a {
     color: #2d6a4f;
     font-weight: bold;
     text-decoration: none;
 }
 
-.cadastro-page .form-footer a:hover {
+.cadastro-login-page .form-footer a:hover {
     text-decoration: underline;
 }
 
-.cadastro-page .botão-cadastrar {
+.botão-enviar {
     background-color: #2d6a4f;
     color: white;
     padding: 10px;
@@ -244,6 +244,7 @@ footer {
     margin-bottom: 20px;
 }
 
-.cadastro-page .botão-cadastrar:hover {
+.botão-enviar:hover {
     background-color: #1b4332;
 }
+
