@@ -2,23 +2,23 @@
 {% block conteudo %}
 {% load static %}
 
-<div class="login-page">
+<div class="cadastro-login-page">
     <div class="container">
         <div class="left-section">
             <h1>MBTI</h1>
-            <p>Cadastre-se e descubra sua personalidade</p>
+            <p>Faça seu login e descubra sua personalidade</p>
         </div>
         <div class="right-section">
-            <h2>Cadastro</h2>
+            <h2>Login</h2>
             <form>
-                <input type="text" placeholder="Nome" required>
-                <input type="text" placeholder="Sobrenome" required>
-                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Email" required>
                 <input type="password" placeholder="Senha" required>
-                <input type="password" placeholder="Confirme a senha" required>
-                <button type="submit">Cadastrar</button>
+                <button type="submit" class="botão-enviar">Login</button>
             </form>
-            <p>Já possui conta? <a href="#">Faça seu Login</a></p>
+            <div class="form-footer">
+                <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
+                <p>Não possui conta? <a href="#">Faça seu Cadastro</a></p>
+            </div>
         </div>
     </div>
 </div>
