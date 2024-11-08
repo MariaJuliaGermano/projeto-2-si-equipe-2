@@ -120,8 +120,6 @@ footer {
 }
 
 .cadastro-login-page {
-    margin: 0px;
-    padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,8 +131,8 @@ footer {
 
 .cadastro-login-page .container {
     display: flex;
-    width: 100vw; 
-    height: 100vh; 
+    width: 100%; 
+    height: 100%; 
 }
 
 .cadastro-login-page .left-section {
