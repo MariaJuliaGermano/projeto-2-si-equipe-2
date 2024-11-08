@@ -1,44 +1,48 @@
 // Variável para rastrear a pergunta atual
-let currentQuestion = 1;
+let currentQuestion = 0;
+let currentAnswer = 0;
 const totalQuestions = 16;
+let form_data = []
+let data = JSON.parse(document.getElementById('received_data').textContent);
+
 
 function nextQuestion() {
-    // Se já está na última pergunta e o botão foi clicado para finalizar, exibe o alerta e finaliza
-    if (currentQuestion > totalQuestions) {
-        alert("Teste finalizado! Verifique seus resultados.");
-        // Aqui você pode redirecionar para a página de resultados, se desejado
-        // window.location.href = "/resultados.html";
-        return;
+    if (document.getElementById("answer-left").checked) {
+        form_data.push(Object.keys(data.questions[currentQuestion].responses)[0])
+    } else if (document.getElementById("answer-right").checked) {
+        form_data.push(Object.keys(data.questions[currentQuestion].responses)[1])
     }
-
-    // Esconde a pergunta atual
-    document.getElementById(`question-${currentQuestion}`).style.display = "none";
-
-    // Incrementa o número da pergunta
-    currentQuestion++;
-
-    // Exibe a próxima pergunta, se ainda houver
-    if (currentQuestion <= totalQuestions) {
-        document.getElementById(`question-${currentQuestion}`).style.display = "block";
-    }
-
-    // Se estamos na última pergunta, altera o botão para "Finalizar teste"
-    if (currentQuestion === totalQuestions) {
-        document.getElementById("nextButton").innerText = "Finalizar teste";
+    currentAnswer++
+    let a1 = Object.values(data.questions[currentQuestion].responses)[0]
+    let a2 = Object.values(data.questions[currentQuestion].responses)[1]
+    if (a1[currentAnswer] == undefined) {
+        currentQuestion++
+        if (data.questions[currentQuestion] == undefined) {
+            console.log("end of test")
+            console.log(data)
+            console.log(form_data)
+            document.getElementById("form-data").value = form_data
+            document.getElementById("answer-section").hidden = true
+            document.getElementById("submit-section").hidden = false
+        } else {
+            currentAnswer = 0
+            initializeQuestions()
+        }
+    } else {
+        document.getElementById("answer-text-left").innerHTML = a1[currentAnswer]
+        document.getElementById("answer-text-right").innerHTML = a2[currentAnswer]
     }
 }
 
 // Função para inicializar a visibilidade das perguntas ao carregar a página
 function initializeQuestions() {
-    // Esconde todas as perguntas, exceto a primeira
-    for (let i = 1; i <= totalQuestions; i++) {
-        if (i === 1) {
-            document.getElementById(`question-${i}`).style.display = "block";
-        } else {
-            document.getElementById(`question-${i}`).style.display = "none";
-        }
-    }
+    document.getElementById("question-number").innerHTML = "Questão "+(currentQuestion + 1)
+    document.getElementById("question-title").innerHTML = data.questions[currentQuestion].question
+    let a1 = Object.values(data.questions[currentQuestion].responses)[0]
+    let a2 = Object.values(data.questions[currentQuestion].responses)[1]
+    document.getElementById("answer-text-left").innerHTML = a1[0]
+    document.getElementById("answer-text-right").innerHTML = a2[0]
 }
-
-// Executa a função de inicialização ao carregar a página
-window.onload = initializeQuestions;
+document.getElementById("submit-section").hidden = true
+// Executa a função de inicialização ao carregar a tag (O json deve ser carregado antes desse script);
+initializeQuestions()
