@@ -4,6 +4,9 @@ import json, os
 from .models import respostas
 from math import ceil
 
+def index(request):
+    return redirect('cadastro')
+
 def home(request):
     if request.method == "GET":
         data = open(os.path.join(settings.BASE_DIR,"teste_mbti\\json\\simple_mbti_questions.json"), "r", encoding= 'utf-8')

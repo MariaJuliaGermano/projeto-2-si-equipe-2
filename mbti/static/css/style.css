@@ -261,7 +261,21 @@ footer {
     background-color: #366b38;
 }
 
+.progress-container {
+    width: 80%; 
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 20px auto;
+    height: 20px;
+}
 
+.progress-bar {
+    height: 100%;
+    width: 0%; 
+    background-color: #4caf50;
+    transition: width 0.4s ease;
+}
 
 .cadastro-login-text {
     font-size: xx-large;
