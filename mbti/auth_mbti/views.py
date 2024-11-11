@@ -3,6 +3,7 @@ from .form import formCadastro, formLogin
 from .models import cadastro as table
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 
 def cadastro(request):
 
@@ -13,14 +14,22 @@ def cadastro(request):
         return render(request, 'auth_mbti/cadastro.html', context)
 
     perfil = form.save(commit=False)
-    perfil.senha = make_password(perfil.senha)
     perfil.save()
 
+    # usuario = User.objects.create_user(
+    #     username=perfil.nome_completo,
+    #     email=perfil.email,
+    #     password=perfil.senha
+    # )
+
+    # usuario.save(commit=False)
+
     tabela = table()
-    tabela.nome_completo = perfil.nome_completo
+    tabela.nome_completo = perfil.nome_completo #usuario.username
     tabela.turma = perfil.turma
-    tabela.email = perfil.email
-    tabela.senha = perfil.senha
+    tabela.email = perfil.email #usuario.email
+    tabela.senha = perfil.senha #usuario.password
+    tabela.curso = perfil.curso
     tabela.save()
     
     return redirect('login')
@@ -28,6 +37,9 @@ def cadastro(request):
 def verificarLogin(request):
     formulario = formLogin(request.POST)
     tabela = table()
+    if tabela.DoesNotExist():
+        print('essa porra não existe')
+    print(tabela)
 
     #user = authenticate(username=formulario.email, password=formulario.senha)
     # if user:
@@ -39,8 +51,8 @@ def verificarLogin(request):
 
     # else:
     if not formulario.is_valid():
-        context = {'formulario':formulario}
-        return render(request, 'auth_mbti/cadastro.html', context)
+        print(formulario.is_valid)
+        return cadastrar(request)
 
     perfil = formulario.save(commit=False)
     senhas = tabela.objects.values_list('senha', flat=True)
@@ -55,7 +67,6 @@ def verificarLogin(request):
 def cadastrar(request):
 
     if request.method == 'POST':
-        print('teste')
         return cadastro(request)
     
     elif request.method == 'GET':

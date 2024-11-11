@@ -5,7 +5,7 @@ from .models import respostas
 from math import ceil
 
 def index(request):
-    return redirect('cadastro')
+    return redirect('login')
 
 def home(request):
     if request.method == "GET":

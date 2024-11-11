@@ -13,8 +13,12 @@ class cadastro(models.Model):
     id = models.AutoField(primary_key=True)
     nome_completo = models.TextField(max_length=200, blank=False, null=False)
     turma = models.TextField(max_length=1, blank=False, null=False)
+    curso = models.TextField(max_length=40, blank=False, null=False)
     email = models.EmailField(max_length=40, blank=False, null=False)
     senha = models.TextField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return 'cadastro'
 
 class Turma(models.Model):
     nome = models.CharField(max_length=100, null=True)
