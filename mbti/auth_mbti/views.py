@@ -16,7 +16,7 @@ def cadastro(request):
     perfil.senha = make_password(perfil.senha)
     perfil.save()
 
-    tabela = cadastro()
+    tabela = table()
     tabela.nome_completo = perfil.nome_completo
     tabela.turma = perfil.turma
     tabela.email = perfil.email
@@ -29,36 +29,37 @@ def verificarLogin(request):
     formulario = formLogin(request.POST)
     tabela = table()
 
-    user = authenticate(username=perfil.email, password=perfil.senha)
-    if user:
-        # A função django-login é necessária para que o usuário seja considerado logado no sistema.
-        # A biblioteca Django mantém o estado do usuário logado usando um cookie.
-        # A função django-login cria e atualiza esse cookie para que o usuário seja considerado logado.
-        django_login(request, user)
+    #user = authenticate(username=formulario.email, password=formulario.senha)
+    # if user:
+    #     # A função django-login é necessária para que o usuário seja considerado logado no sistema.
+    #     # A biblioteca Django mantém o estado do usuário logado usando um cookie.
+    #     # A função django-login cria e atualiza esse cookie para que o usuário seja considerado logado.
+    #     django_login(request, user)
+    #     return render(request, 'teste_mbti/testedepersonalidade.html')
+
+    # else:
+    if not formulario.is_valid():
+        context = {'formulario':formulario}
+        return render(request, 'auth_mbti/cadastro.html', context)
+
+    perfil = formulario.save(commit=False)
+    senhas = tabela.objects.values_list('senha', flat=True)
+
+    if perfil.senha in senhas:
+        context = {'dadosUsuario':tabela.objects.filter(senha=perfil.senha)}
+
         return render(request, 'teste_mbti/testedepersonalidade.html')
-
-    else:
-        if not formulario.is_valid():
-            context = {'formulario':formulario}
-            return render(request, 'auth_mbti/cadastro.html', context)
-    
-        perfil = formulario.save(commit=False)
-        senhas = tabela.objects.values_list('senha', flat=True)
-
-        if perfil.senha in senhas:
-            context = {'dadosUsuario':tabela.objects.filter(senha=perfil.senha)}
-
-            return render(request, 'teste_mbti/testedepersonalidade.html')
         
 #===================== Views =====================
 
 def cadastrar(request):
 
     if request.method == 'POST':
+        print('teste')
         return cadastro(request)
     
     elif request.method == 'GET':
-        context = {'formulrio':formCadastro()}
+        context = {'formulario':formCadastro()}
         return render(request, 'auth_mbti/cadastro.html', context=context)
 
 

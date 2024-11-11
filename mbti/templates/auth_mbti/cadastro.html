@@ -19,7 +19,7 @@
         </div>
         <div class="right-section">
             <h2 class="cadastro">Cadastro</h2>
-            <form action="post">
+            <form method="post">
                 {% csrf_token %}
                 {{ formulario.non_field_errors }}
                 {{ formulario.nome_completo }}
@@ -30,7 +30,7 @@
                 {{ formulario.email }}
                 {{ formulario.senha }}
                 <input type="password" placeholder="Confirme a senha" required>
-                <button type="submit" class="botão-enviar" href="{% url 'login' %}">Cadastrar</button>
+                <button type="submit" class="botão-enviar" href="{% url 'cadastro' %}">Cadastrar</button>
             </form>
             <div class="form-footer">
                 <p>Já possui conta? <a href="#">Faça seu Login</a></p>
