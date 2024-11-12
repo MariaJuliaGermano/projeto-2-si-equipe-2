@@ -29,11 +29,19 @@
                 </div>
                 {{ formulario.email }}
                 {{ formulario.senha }}
-                <input type="password" placeholder="Confirme a senha" required>
+                <input type="password" placeholder="Confirme a senha" name="senha_confirm" required>
                 <button type="submit" class="botão-enviar" href="{% url 'cadastro' %}">Cadastrar</button>
+                <ul>
+                {% if email_existente %}
+                        <li style="color: red;margin-bottom: 10px;">{{ email_existente }}</li>
+                {% endif %}
+                {% if senha_divergente %}
+                    <li style="color: red;margin-bottom: 10px;">{{ senha_divergente }}</li>
+                {% endif %}
+                </ul>
             </form>
             <div class="form-footer">
-                <p>Já possui conta? <a href="#">Faça seu Login</a></p>
+                <p>Já possui conta? <a href="{% url 'login' %}">Faça seu Login</a></p>
             </div>
         </div>
     </div>

@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .form import formCadastro, formLogin
 from .models import cadastro as table
-from django.contrib.auth import authenticate, login as django_login
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.models import User
+from django.contrib.auth import login as django_login
+from hashlib import sha256
 
 def cadastro(request):
 
@@ -13,55 +12,79 @@ def cadastro(request):
         context = {'formulario':form}
         return render(request, 'auth_mbti/cadastro.html', context)
 
-    perfil = form.save(commit=False)
-    perfil.save()
-
-    # usuario = User.objects.create_user(
-    #     username=perfil.nome_completo,
-    #     email=perfil.email,
-    #     password=perfil.senha
-    # )
-
-    # usuario.save(commit=False)
-
     tabela = table()
-    tabela.nome_completo = perfil.nome_completo #usuario.username
-    tabela.turma = perfil.turma
-    tabela.email = perfil.email #usuario.email
-    tabela.senha = perfil.senha #usuario.password
-    tabela.curso = perfil.curso
-    tabela.save()
+    email = form['email'].value()
+
+    try:
+        user = table.objects.get(email=email)
+        context = {
+            'email_existente':'Este email ja está sendo utilizado em uma conta',
+            'formulario':formCadastro()
+            }
+        return render(request, 'auth_mbti/cadastro.html', context)
     
-    return redirect('login')
+    except:
+
+        senha_confim = request.POST['senha_confirm']
+
+        if senha_confim == form['senha'].value():
+            perfil = form.save(commit=False)
+            tabela.nome_completo = perfil.nome_completo 
+            tabela.turma = perfil.turma
+            tabela.email = perfil.email
+
+            senha = perfil.senha
+            senha_hash = sha256(senha.encode()).hexdigest()
+            tabela.senha = senha_hash
+
+            tabela.curso = perfil.curso
+            tabela.save()
+            
+            return redirect('login')
+        
+        else:
+            context = {
+            'senha_divergente':'As senhas devem se iguais nos dois campos',
+            'formulario':formCadastro()
+            }
+            return render(request, 'auth_mbti/cadastro.html', context)
 
 def verificarLogin(request):
     formulario = formLogin(request.POST)
-    tabela = table()
-    if tabela.DoesNotExist():
-        print('essa porra não existe')
-    print(tabela)
+    email = formulario['email'].value()
+
+    senha = formulario['senha'].value()
+    senha_hash = sha256(senha.encode()).hexdigest()
+    print(senha_hash)
+
+    try:
+        user = table.objects.get(email=email)
+        
+    except:
+        context = {
+            'erro_login':'Email ou senha incorretos',
+            'formulario': formLogin()
+            }
+        return render(request, 'auth_mbti/login.html', context)
+    
+    if user.senha == senha_hash:
+        #django_login(request, user)
+        return render(request, 'teste_mbti/testepersonalidade.html')
+    
+    else:
+        context = {
+            'erro_login':'Email ou senha incorretos',
+            'formulario': formLogin
+            }
+        return render(request, 'auth_mbti/login.html', context)
 
     #user = authenticate(username=formulario.email, password=formulario.senha)
     # if user:
-    #     # A função django-login é necessária para que o usuário seja considerado logado no sistema.
-    #     # A biblioteca Django mantém o estado do usuário logado usando um cookie.
-    #     # A função django-login cria e atualiza esse cookie para que o usuário seja considerado logado.
-    #     django_login(request, user)
-    #     return render(request, 'teste_mbti/testedepersonalidade.html')
-
-    # else:
-    if not formulario.is_valid():
-        print(formulario.is_valid)
-        return cadastrar(request)
-
-    perfil = formulario.save(commit=False)
-    senhas = tabela.objects.values_list('senha', flat=True)
-
-    if perfil.senha in senhas:
-        context = {'dadosUsuario':tabela.objects.filter(senha=perfil.senha)}
-
-        return render(request, 'teste_mbti/testedepersonalidade.html')
-        
+        # A função django-login é necessária para que o usuário seja considerado logado no sistema.
+        # A biblioteca Django mantém o estado do usuário logado usando um cookie.
+        # A função django-login cria e atualiza esse cookie para que o usuário seja considerado logado.
+        # django_login(request, user)
+        # return render(request, 'teste_mbti/testedepersonalidade.html')
 #===================== Views =====================
 
 def cadastrar(request):
@@ -77,7 +100,7 @@ def cadastrar(request):
 def login(request):
 
     if request.method == 'GET':
-      context = {'formulario': formLogin}
+      context = {'formulario': formLogin()}
       return render(request, 'auth_mbti/login.html', context)
   
     elif request.method == 'POST':
