@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .form import formCadastro, formLogin
 from .models import cadastro as table
 from django.contrib.auth import login as django_login
@@ -55,7 +55,6 @@ def verificarLogin(request):
 
     senha = formulario['senha'].value()
     senha_hash = sha256(senha.encode()).hexdigest()
-    print(senha_hash)
 
     try:
         user = table.objects.get(email=email)
@@ -68,9 +67,12 @@ def verificarLogin(request):
         return render(request, 'auth_mbti/login.html', context)
     
     if user.senha == senha_hash:
-        #django_login(request, user)
-        return render(request, 'teste_mbti/testepersonalidade.html')
-    
+        logado = HttpResponse('logged')
+        response = redirect('home')
+        response.set_cookie('logged', True, max_age=1500, secure=True, httponly=True)
+
+        return response
+
     else:
         context = {
             'erro_login':'Email ou senha incorretos',
@@ -101,7 +103,10 @@ def login(request):
 
     if request.method == 'GET':
       context = {'formulario': formLogin()}
-      return render(request, 'auth_mbti/login.html', context)
+      response = render(request, 'auth_mbti/login.html', context)
+      response.delete_cookie('logged')
+      
+      return response
   
     elif request.method == 'POST':
         return verificarLogin(request)

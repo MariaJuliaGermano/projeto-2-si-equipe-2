@@ -24,11 +24,14 @@
                 {{ formulario.email }}
                 {{ formulario.senha }}
                 <button type="submit" class="botão-enviar" href="{% url 'login' %}">Entrar</button>
-                {% if erro_login %} 
-                    <ul>
+                <ul>
+                    {% if erro_login %} 
                         <li style="color: red; margin-bottom: 10px;">{{ erro_login }}</li>
-                    </ul>
-                {% endif %}
+                    {% endif %}
+                    {% if nao_logado %} 
+                        <li style="color: red; margin-bottom: 10px;">{{ nao_logado }}</li>
+                    {% endif %}
+                </ul>
             </form>
                 <div class="form-footer">
                     <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
