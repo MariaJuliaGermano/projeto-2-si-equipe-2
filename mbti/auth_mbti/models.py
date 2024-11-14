@@ -17,8 +17,8 @@ class cadastro(models.Model):
     email = models.EmailField(max_length=40, blank=False, null=False)
     senha = models.TextField(max_length=120, null=False, blank=False)
 
-    # def __str__(self):
-    #     return 'teste'
+    def __str__(self):
+        return self.nome_completo
 
 class Turma(models.Model):
     nome = models.CharField(max_length=100, null=True)

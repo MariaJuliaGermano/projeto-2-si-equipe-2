@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .form import formCadastro, formLogin
 from .models import cadastro as table
-from django.contrib.auth import login as django_login
-from hashlib import sha256
+from hashlib import sha256, sha512
 
 def cadastro(request):
 
@@ -67,11 +66,15 @@ def verificarLogin(request):
         return render(request, 'auth_mbti/login.html', context)
     
     if user.senha == senha_hash:
-        logado = HttpResponse('logged')
         response = redirect('home')
         response.set_cookie('logged', True, max_age=1500, secure=True, httponly=True)
 
-        return response
+        email_logged = sha256(user.email.encode()).hexdigest()
+        email_logged = sha512(email_logged.encode()).hexdigest()
+        
+        response.set_cookie('logged_info', email_logged, max_age=1500, secure=True, httponly=True)
+
+        return response 
 
     else:
         context = {
@@ -79,14 +82,7 @@ def verificarLogin(request):
             'formulario': formLogin
             }
         return render(request, 'auth_mbti/login.html', context)
-
-    #user = authenticate(username=formulario.email, password=formulario.senha)
-    # if user:
-        # A função django-login é necessária para que o usuário seja considerado logado no sistema.
-        # A biblioteca Django mantém o estado do usuário logado usando um cookie.
-        # A função django-login cria e atualiza esse cookie para que o usuário seja considerado logado.
-        # django_login(request, user)
-        # return render(request, 'teste_mbti/testedepersonalidade.html')
+    
 #===================== Views =====================
 
 def cadastrar(request):
@@ -105,7 +101,8 @@ def login(request):
       context = {'formulario': formLogin()}
       response = render(request, 'auth_mbti/login.html', context)
       response.delete_cookie('logged')
-      
+      response.delete_cookie('logged_info')
+
       return response
   
     elif request.method == 'POST':
