@@ -4,9 +4,12 @@ let currentAnswer = 0;
 const totalQuestions = 16;
 let form_data = []
 let data = JSON.parse(document.getElementById('received_data').textContent);
-
+let count = 0;
 
 function nextQuestion() {
+    count++
+    document.getElementById("counter-bar").style.width = (count/48)*100+"%"
+    document.getElementById("counter").innerHTML = count+"/48"
     if (document.getElementById("answer-left").checked) {
         form_data.push(Object.keys(data.questions[currentQuestion].responses)[0])
     } else if (document.getElementById("answer-right").checked) {

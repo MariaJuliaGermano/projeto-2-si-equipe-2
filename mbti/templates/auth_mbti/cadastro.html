@@ -19,19 +19,29 @@
         </div>
         <div class="right-section">
             <h2 class="cadastro">Cadastro</h2>
-            <form>
-                <input type="text" placeholder="Nome Completo" required>
+            <form method="post">
+                {% csrf_token %}
+                {{ formulario.non_field_errors }}
+                {{ formulario.nome_completo }}
                 <div class="form-group">
-                    <input type="text" placeholder="Curso" required>
-                    <input type="text" placeholder="Turma" required>
+                    {{ formulario.curso }}
+                    {{ formulario.turma }}
                 </div>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
-                <input type="password" placeholder="Confirme a senha" required>
-                <button type="submit" class="botão-enviar">Cadastrar</button>
+                {{ formulario.email }}
+                {{ formulario.senha }}
+                <input type="password" placeholder="Confirme a senha" name="senha_confirm" required>
+                <button type="submit" class="botão-enviar" href="{% url 'cadastro' %}">Cadastrar</button>
+                <ul>
+                {% if email_existente %}
+                        <li style="color: red;margin-bottom: 10px;">{{ email_existente }}</li>
+                {% endif %}
+                {% if senha_divergente %}
+                    <li style="color: red;margin-bottom: 10px;">{{ senha_divergente }}</li>
+                {% endif %}
+                </ul>
             </form>
             <div class="form-footer">
-                <p>Já possui conta? <a href="#">Faça seu Login</a></p>
+                <p>Já possui conta? <a href="{% url 'login' %}">Faça seu Login</a></p>
             </div>
         </div>
     </div>

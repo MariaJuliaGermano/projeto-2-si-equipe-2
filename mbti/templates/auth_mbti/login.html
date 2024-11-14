@@ -19,14 +19,23 @@
             </div>
             <div class="right-section">
                 <h2 class="login">Login</h2>
-                <form>
-                    <input type="text" placeholder="Email" required>
-                    <input type="password" placeholder="Senha" required>
-                    <button type="submit" class="botão-enviar">Login</button>
-                </form>
+                <form method="post">
+                {% csrf_token %}
+                {{ formulario.email }}
+                {{ formulario.senha }}
+                <button type="submit" class="botão-enviar" href="{% url 'login' %}">Entrar</button>
+                <ul>
+                    {% if erro_login %} 
+                        <li style="color: red; margin-bottom: 10px;">{{ erro_login }}</li>
+                    {% endif %}
+                    {% if nao_logado %} 
+                        <li style="color: red; margin-bottom: 10px;">{{ nao_logado }}</li>
+                    {% endif %}
+                </ul>
+            </form>
                 <div class="form-footer">
                     <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-                    <p>Não possui conta? <a href="#">Faça seu Cadastro</a></p>
+                    <p>Não possui conta? <a href="{% url 'cadastro' %}">Faça seu Cadastro</a></p>
                 </div>
             </div>
         </div>
