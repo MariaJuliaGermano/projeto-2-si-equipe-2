@@ -1,4 +1,4 @@
-/* Personalize o logo da navbar */
+
 .mbti-logo {
     font-weight: bold;
     font-size: 24px;
@@ -41,22 +41,45 @@
     color: #000;
 }
 
-.header-section {
-    background-color: #3ba569;
-    color: white;
-    padding: 3rem 0;
+footer {
     text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid #ddd;
 }
 
-.header-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
+.section-green {
+    background-color: #2c6e49;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.section-title {
+    font-size: 2.5em;
     font-weight: 600;
 }
 
-.header-section p {
-    font-size: 1.2rem;
-    font-weight: 400;
+.section-subtext {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.section-link {
+    color: #d3eecd;
+    text-decoration: underline;
+}
+
+.section-link:hover {
+    color: #ffffff;
 }
 
 .info-section {
@@ -129,14 +152,7 @@
     margin-top: 2rem;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    font-size: 0.9rem;
-    margin-top: auto;
-    border-top: 1px solid #ddd;
-}
+
 .header-section {
     background-color: #4caf50;
     color: white;
@@ -149,4 +165,19 @@ footer {
     align-items: center;     
 }
 
+.progress-container {
+    width: 80%; 
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 20px auto;
+    height: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%; 
+    background-color: #4caf50;
+    transition: width 0.4s ease;
+}
 
