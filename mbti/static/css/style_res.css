@@ -1,4 +1,3 @@
-/* Personalize o logo da navbar */
 .mbti-logo {
     font-weight: bold;
     font-size: 24px;
@@ -13,7 +12,7 @@
 
 /* Cor de fundo e borda inferior da navbar */
 .navbar {
-    background-color: #f8f9fa;
+    background-color: #3ba569;
     border-bottom: 1px solid #e0e0e0;
 }
 
@@ -41,10 +40,20 @@
     color: #000;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid #ddd;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
 
 .resultado-container {
     background-color: #3ba569;
@@ -120,4 +129,44 @@ body {
     height: 50px;
 }
 
+/* Estilização das estrelas */
+.stars .star {
+    font-size: 30px; /* Aumenta o tamanho das estrelas */
+    color: #ffc107; /* Define a cor das estrelas */
+    cursor: pointer; /* Cursor de ponteiro ao passar por cima */
+}
+
+/* Estilo da área de comentários */
+.comentarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#comentario {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+}
+
+/* Estilo do botão de enviar */
+#enviarComentario {
+    padding: 8px 16px;
+    background-color: #3ba569;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#enviarComentario:hover {
+    background-color: #2d8549;
+}
 
