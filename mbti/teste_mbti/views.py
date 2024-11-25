@@ -132,7 +132,12 @@ def results(request):
 
             if email_teste == email_logged:
                 user = cadastro.objects.get(email=email) #get_object_or_404(cadastro, email=email) #cadastro.objects.get(email=email)
-                tabela = respostas.objects.get(chave=user)
+                
+                try:
+                    tabela = respostas.objects.get(chave=user)
+                except:
+                    # Redireciona para a página de testes caso o usuário não tenha feito nenhum teste.
+                    return redirect('home')
 
                 perfil = tabela.perfil_MBTI
 
