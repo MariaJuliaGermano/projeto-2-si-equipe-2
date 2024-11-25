@@ -159,67 +159,90 @@ def results(request):
             email_teste = sha512(email_teste.encode()).hexdigest()
 
             if email_teste == email_logged:
+
                 user = cadastro.objects.get(email=email) #get_object_or_404(cadastro, email=email) #cadastro.objects.get(email=email)
+                context = {}
                 
                 try:
                     tabela = respostas.objects.get(chave=user)
-                except:
-                    # Redireciona para a página de testes caso o usuário não tenha feito nenhum teste.
-                    return redirect('home')
+                    context['teste'] = True
 
-                perfil = tabela.perfil_MBTI
+                    perfil = tabela.perfil_MBTI
 
-                if perfil == "SJ":
-                    context = {
-                        'perfil':"GUARDIÃO", 
-                        'sigla': "SJ",
-                        'descrição': "Concreto e cooperativo, procura segurança, está preocupados com a responsabilidade e dever. Sua maior força é a logística. Seu ponto forte é organização. É excelente em facilitar (para os demais), verificar (serviço dos demais) e dar apoio em geral."
-                        }
-                elif perfil == "SP":
-                    context = {
-                        'perfil':"ARTESÃO", 
-                        'sigla': "SP",
-                        'descrição': "Concreto e pragmático, procura estimulação e preocupa-se em causar impacto. Sua maior força é a tática. É excelentes na resolução de problemas, agilidade, manipulação de ferramentas, instrumentos e equipamentos."
-                        }
-                elif perfil == "NF":
-                    context = {
-                        'perfil':"IDEALISTA", 
-                        'sigla': "NF",
-                        'descrição': "Abstrato e cooperativo, procura significado e importância, se preocupa com crescimento pessoal e encontrar sua própria identidade. Sua maior força é a diplomacia. Destaca-se por deixar situações mais claras e inspirar pessoas."
-                        }
-                elif perfil == "NT":
-                    context = context = {
-                        'perfil':"RACIONAL", 
-                        'sigla': "NT",
-                        'descrição': "Abstrato e pragmático, procura maestria e autocontrole. Se preocupa com o próprio conhecimento e competência. Sua maior força é a estratégia. Destacam-se em investigações lógicas como engenharia, conceitos, teorias e coordenação."
-                        }
+                    if perfil == "SJ":
+                        context = {
+                            'perfil':"GUARDIÃO", 
+                            'sigla': "SJ",
+                            'descrição': "Concreto e cooperativo, procura segurança, está preocupados com a responsabilidade e dever. Sua maior força é a logística. Seu ponto forte é organização. É excelente em facilitar (para os demais), verificar (serviço dos demais) e dar apoio em geral."
+                            }
+                    elif perfil == "SP":
+                        context = {
+                            'perfil':"ARTESÃO", 
+                            'sigla': "SP",
+                            'descrição': "Concreto e pragmático, procura estimulação e preocupa-se em causar impacto. Sua maior força é a tática. É excelentes na resolução de problemas, agilidade, manipulação de ferramentas, instrumentos e equipamentos."
+                            }
+                    elif perfil == "NF":
+                        context = {
+                            'perfil':"IDEALISTA", 
+                            'sigla': "NF",
+                            'descrição': "Abstrato e cooperativo, procura significado e importância, se preocupa com crescimento pessoal e encontrar sua própria identidade. Sua maior força é a diplomacia. Destaca-se por deixar situações mais claras e inspirar pessoas."
+                            }
+                    elif perfil == "NT":
+                        context = context = {
+                            'perfil':"RACIONAL", 
+                            'sigla': "NT",
+                            'descrição': "Abstrato e pragmático, procura maestria e autocontrole. Se preocupa com o próprio conhecimento e competência. Sua maior força é a estratégia. Destacam-se em investigações lógicas como engenharia, conceitos, teorias e coordenação."
+                            }
+                        
+                    pergunta_1 = list(tabela.pergunta_1)
+                    len_E = pergunta_1.count("E")
+                    extrovertido = (len_E / 11) * 100
+
+                    pergunta_2 = list(tabela.pergunta_2)
+                    len_N = pergunta_2.count("N")
+                    intuitivo = (len_N / 11) * 100
+
+                    pergunta_3 = list(tabela.pergunta_3)
+                    len_T = pergunta_3.count("T")
+                    analitico = (len_T / 13) * 100
+
+                    pergunta_4 = list(tabela.pergunta_4)
+                    len_J = pergunta_4.count("E")
+                    planejador = (len_J / 13) * 100
+
+                    len_P = pergunta_4.count("P")
+                    assertivo = (len_P / 13) * 100
+
+                    context['extrovertido'] = ceil(extrovertido)
+                    context['intuitivo'] = ceil(intuitivo)
+                    context['analitico'] = ceil(analitico)
+                    context['planejador'] = ceil(planejador)
+                    context['assertivo'] = ceil(assertivo)
+
+                    try:
+                        tabela = respostas.objects.get(chave=user)
+                        context['teste'] = True
+
+                    except:
+                        pass
+
+                    # user_test = request.COOKIES.get('test_info')
+
+                        # if user_test == 'True':
+                        #     context['teste'] = True
+
+                        # elif user_test == 'False':
+                        #     pass
                     
-                pergunta_1 = list(tabela.pergunta_1)
-                len_E = pergunta_1.count("E")
-                extrovertido = (len_E / 11) * 100
+                    # except:
+                    #     # Redireciona para a página de testes caso o usuário não tenha feito nenhum teste.
+                    #     #return redirect('home')
+                    #     return render(request, 'teste_mbti/resultado.html')
 
-                pergunta_2 = list(tabela.pergunta_2)
-                len_N = pergunta_2.count("N")
-                intuitivo = (len_N / 11) * 100
-
-                pergunta_3 = list(tabela.pergunta_3)
-                len_T = pergunta_3.count("T")
-                analitico = (len_T / 13) * 100
-
-                pergunta_4 = list(tabela.pergunta_4)
-                len_J = pergunta_4.count("E")
-                planejador = (len_J / 13) * 100
-
-                len_P = pergunta_4.count("P")
-                assertivo = (len_P / 13) * 100
-
-                context['extrovertido'] = ceil(extrovertido)
-                context['intuitivo'] = ceil(intuitivo)
-                context['analitico'] = ceil(analitico)
-                context['planejador'] = ceil(planejador)
-                context['assertivo'] = ceil(assertivo)
-
-                return render(request, 'teste_mbti/resultado.html', context)
+                    return render(request, 'teste_mbti/resultado.html', context)
+                
+                except:
+                    return render(request, 'teste_mbti/resultado.html')
             
     else:
         return redirect('login')

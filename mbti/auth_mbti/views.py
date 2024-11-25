@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from .form import formCadastro, formLogin
 from .models import cadastro as table
+from teste_mbti.models import respostas
 from hashlib import sha256, sha512
 
 def cadastro(request):
@@ -73,6 +74,13 @@ def verificarLogin(request):
         email_logged = sha512(email_logged.encode()).hexdigest()
         
         response.set_cookie('logged_info', email_logged, max_age=1500, secure=True, httponly=True)
+
+        try:
+            user_test = respostas.objects.get(chave = user.id)
+            response.set_cookie('test_info', 'True', max_age=1500, secure=True, httponly=True)
+
+        except:
+            response.set_cookie('test_info', 'False', max_age=1500, secure=True, httponly=True)
 
         return response 
 
