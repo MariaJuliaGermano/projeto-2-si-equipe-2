@@ -117,10 +117,12 @@
             </div>
 
             <!-- Área de comentários -->
-            <div class="comentarios mt-3">
-                <textarea id="comentario" rows="4" placeholder="Deixe seu comentário aqui..."></textarea>
-                <button id="enviarComentario">Enviar</button>
-            </div>
+            <form class="comentarios mt-3" action="{% url 'feedback' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="stars" value="">
+                <input type="text" name="comentario" rows="4" placeholder="Deixe seu comentário aqui...">
+                <input type="submit" name="enviarComentario" value="Enviar">
+            </form>
         </div>
         
         <!-- Rodapé -->

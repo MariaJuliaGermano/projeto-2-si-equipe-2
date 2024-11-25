@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 import json, os
-from .models import respostas
+from .models import respostas, feedbackmbti
 from auth_mbti.models import cadastro
 from math import ceil
 from hashlib import sha256, sha512
@@ -9,6 +9,34 @@ from hashlib import sha256, sha512
 def index(request):
     return redirect('login')
 
+def feedback(request):
+    
+    if request.method == 'GET':
+        return redirect('home')
+    
+    elif request.method == 'POST':
+        
+        logado = request.COOKIES.get('logged')
+        email_logged = request.COOKIES.get('logged_info')
+        
+        if logado == 'True':
+            comentario = request.POST['comentario']
+            # Estrelas ainda não foram implementadas
+            star = 5
+            feedback_table = feedbackmbti()
+            feedback_table.stars = star
+            feedback_table.comment = comentario
+            emails = cadastro.objects.values_list('email', flat=True)
+
+            for email in emails:
+                email_teste = sha256(email.encode()).hexdigest()
+                email_teste = sha512(email_teste.encode()).hexdigest()
+
+                if email_teste == email_logged:
+                    user = get_object_or_404(cadastro, email=email)
+            feedback_table.chave = user
+            feedback_table.save()        
+            return redirect('home')
 
 def home(request):
     if request.method == "GET":
@@ -37,7 +65,7 @@ def home(request):
         
         else:
             return redirect('login')
-        
+    
     elif request.method == "POST":
 
         logado = request.COOKIES.get('logged')
