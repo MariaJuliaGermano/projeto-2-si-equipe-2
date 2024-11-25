@@ -26,25 +26,22 @@
                         <a class="nav-link" href="{% url 'home' %}">Teste de personalidade</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tipos de personalidade</a>
+                        <a class="nav-link" href="{% url 'tipos' %}">Tipos de personalidade</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"></a>
                     </li>
                 </ul>
             </div>
-            <div class="navbar-icons">
-                
-                
-                
+            <div class="navbar-icons">            
             </div>
         </div>
     </nav>
     
     <div class="resultado-container">
         <h1>O seu tipo de personalidade é:</h1>
-        <h1>ENFJ</h1>
-        <p>Protagonista</p>
+        <h1>{{ perfil }}</h1>
+        <p>{{ sigla }}</p>
         
         <div class="icone-personalidade">
             <img src="{% static 'img/party.jpeg' %}" alt="Ícone ENFJ">
@@ -128,7 +125,7 @@
         
         <!-- Rodapé -->
         <footer class="text-center mt-4">
-            <p>&copy; 2024 MBTI Project</p>
+            ©Cesar school 2024 | <a href="{% url 'equipe' %}">Conheça nossa equipe</a>
         </footer>
     </div>
 

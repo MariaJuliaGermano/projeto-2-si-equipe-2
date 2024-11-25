@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 import json, os
 from .models import respostas
 from auth_mbti.models import cadastro
 from math import ceil
-from auth_mbti.form import formLogin
 from hashlib import sha256, sha512
 
 def index(request):
     return redirect('login')
+
 
 def home(request):
     if request.method == "GET":
@@ -16,7 +16,7 @@ def home(request):
         logado = request.COOKIES.get('logged')
         email_logged = request.COOKIES.get('logged_info')
 
-        if logado:
+        if logado == 'True':
             data = open(os.path.join(settings.BASE_DIR,"teste_mbti\\json\\simple_mbti_questions.json"), "r", encoding= 'utf-8')
             data = json.load(data)
 
@@ -42,7 +42,7 @@ def home(request):
 
         logado = request.COOKIES.get('logged')
 
-        if logado:
+        if logado == 'True':
             receivedData = request.POST["data"]
             receivedData = receivedData.split(",")
 
@@ -116,11 +116,12 @@ def home(request):
         else:
             redirect('login')
 
+
 def results(request):
 
     logado = request.COOKIES.get('logged')
 
-    if logado:
+    if logado == 'True':
 
         email_logged = request.COOKIES.get('logged_info')
         emails = cadastro.objects.values_list('email', flat=True)
@@ -189,3 +190,36 @@ def results(request):
             
     else:
         return redirect('login')
+    
+
+def equipe(request):
+
+    if request.method == 'GET':
+
+        logado = request.COOKIES.get('logged')
+
+        if logado == 'True':
+            return render(request, 'teste_mbti/equipe.html')
+
+        else:
+            return redirect('login')
+
+    elif request.method == 'POST':
+        return redirect('login')
+    
+
+def tiposPersonalidades(request):
+
+    if request.method == 'GET':
+
+        logado = request.COOKIES.get('logged')
+
+        if logado == 'True':
+            return render(request, 'teste_mbti/tipos.html')
+
+        else:
+            return redirect('login')
+
+    elif request.method == 'POST':
+        return redirect('login')
+            
