@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado MBTI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style_res.css' %}">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand mbti-logo" href="#">MBTI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href=""><b>Seus resultados</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Teste de personalidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tipos' %}">Tipos de personalidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-icons">            
+            </div>
+        </div>
+    </nav>
+        <div class="resultado-container">
+            {% if teste %}
+            <h1>O seu tipo de personalidade é:</h1>
+            <h1>{{ perfil }}</h1>
+            <p>{{ sigla }}</p>
+            
+            <div class="icone-personalidade">
+                <img src="{% static 'img/party.jpeg' %}" alt="Ícone ENFJ">
+            </div>
+
+            <div class="decoracao">
+                <div class="fogo-de-artificio"></div>
+                <div class="fogo-de-artificio"></div>
+                <div class="fogo-de-artificio"></div>
+            </div>
+
+            <div class="descricao">
+                <p>Confira abaixo mais informações!</p>
+            </div>
+            {% else %}
+            <h1>Você ainda não possui um resultado :(</h1>
+            <p>Realize o nosso <a href="{% url 'home' %}">teste de personalidade MBTI</a> para descobrir o seu perfil!</p>
+            {% endif %}
+        </div>
+
+        {% if teste %}
+        <div class="container mt-5 mb-5">
+            <h5 class="text-center">1. Características da personalidade</h5>
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <p>
+                        Como um {{ sigla }} ({{ perfil }}), você é {{ descrição }}
+                    </p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="{% static 'img/drake.jpeg' %}" alt="Imagem de personalidade" class="img-fluid rounded">
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <!-- Barras de progresso -->
+                <div class="mb-3">
+                    <label>Extrovertido</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: {{ extrovertido }}%;">{{ extrovertido }}%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Intuitivo</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{ intuitivo }}%;">{{ intuitivo }}%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Analítico</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ analitico }}%;">{{ analitico }}%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Planejador</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{ planejador }}%;">{{ planejador }}%</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Assertivo</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: {{ assertivo }}%;">{{ assertivo }}%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Avaliação -->
+            <div class="text-center mt-4">
+                <p>Curtiu? <br> Então avalie nosso site!</p>
+                <div class="stars">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+
+                <!-- Área de comentários -->
+                <form class="comentarios mt-3" action="{% url 'feedback' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="stars" value="">
+                    <input type="text" name="comentario" rows="4" placeholder="Deixe seu comentário aqui...">
+                    <input type="submit" name="enviarComentario" value="Enviar">
+                </form>
+            </div>
+        
+    {% endif %}
+            <!-- Rodapé -->
+            <footer class="text-center mt-4">
+                ©Cesar school 2024 | <a href="{% url 'equipe' %}">Conheça nossa equipe</a>
+            </footer>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
