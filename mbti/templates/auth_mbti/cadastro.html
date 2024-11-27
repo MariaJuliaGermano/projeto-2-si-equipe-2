@@ -30,6 +30,7 @@
                     {{ formulario.turma }}
                 </div>
                 {{ formulario.email }}
+                <input type="email" placeholder="Confirme o email" name="email_confirm" required>
                 {{ formulario.senha }}
                 <input type="password" placeholder="Confirme a senha" name="senha_confirm" required>
                 <button type="submit" class="botão-enviar" href="{% url 'cadastro' %}">Cadastrar</button>
@@ -39,6 +40,9 @@
                 {% endif %}
                 {% if senha_divergente %}
                     <li style="color: red;margin-bottom: 10px;">{{ senha_divergente }}</li>
+                {% endif %}
+                {% if email_divergente %}
+                    <li style="color: red;margin-bottom: 10px;">{{ email_divergente }}</li>
                 {% endif %}
                 </ul>
             </form>

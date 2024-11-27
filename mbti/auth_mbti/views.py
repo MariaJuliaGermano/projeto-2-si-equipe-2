@@ -28,19 +28,30 @@ def cadastro(request):
         senha_confim = request.POST['senha_confirm']
 
         if senha_confim == form['senha'].value():
-            perfil = form.save(commit=False)
-            tabela.nome_completo = perfil.nome_completo 
-            tabela.turma = perfil.turma
-            tabela.email = perfil.email
 
-            senha = perfil.senha
-            senha_hash = sha256(senha.encode()).hexdigest()
-            tabela.senha = senha_hash
+            email_confirm = request.POST['email_confirm']
 
-            tabela.curso = perfil.curso
-            tabela.save()
+            if email_confirm == form['email'].value():
+                perfil = form.save(commit=False)
+                tabela.nome_completo = perfil.nome_completo 
+                tabela.turma = perfil.turma
+                tabela.email = perfil.email
+
+                senha = perfil.senha
+                senha_hash = sha256(senha.encode()).hexdigest()
+                tabela.senha = senha_hash
+
+                tabela.curso = perfil.curso
+                tabela.save()
+                
+                return redirect('login')
             
-            return redirect('login')
+            else:
+                context = {
+                'email_divergente':'Os emails devem se iguais nos dois campos',
+                'formulario':formCadastro()
+                }
+                return render(request, 'auth_mbti/cadastro.html', context)
         
         else:
             context = {
