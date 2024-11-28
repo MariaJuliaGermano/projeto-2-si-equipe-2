@@ -24,7 +24,7 @@ class formCadastro(forms.ModelForm):
 class formLogin(forms.ModelForm):
 
     email = forms.EmailField(max_length=40, required=True, widget=forms.EmailInput(attrs= {'placeholder': 'Digite o seu email'}))
-    senha = forms.CharField(widget=forms.PasswordInput(attrs= {'placeholder': 'Digite o sua senha'}), required=True)
+    senha = forms.CharField(widget=forms.PasswordInput(attrs= {'placeholder': 'Digite a sua senha'}), required=True)
 
     class Meta:
         model = cadastro
