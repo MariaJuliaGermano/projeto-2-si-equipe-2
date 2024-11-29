@@ -35,7 +35,6 @@ body {
 
 .button {
   margin-top: 30px;
-  margin-bottom: 0;
   background-color: #76cc89c7;
   color: white;
   padding: 10px 20px;
@@ -66,7 +65,6 @@ body {
 .card {
   background-color: rgba(20, 116, 84, 0.486); 
   border-radius: 10px;
-  border: none;
   text-align: center;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
@@ -77,11 +75,6 @@ body {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-}
-
-.team-grid:last-child .card {
-  width: 250px; 
-  height: 250px; 
 }
 
 .card img {
@@ -104,9 +97,55 @@ body {
   margin: 0;
 }
 
-.team-grid.single-card {
-  margin-top: 20px;
-  margin-left: 80px;
-  display: flex; 
-  justify-content: center; 
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dois cards por linha no tablet */
+    gap: 15px;
+  }
+
+  .card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr; /* Um card por linha no mobile */
+    gap: 10px;
+  }
+
+  .card {
+    width: 90%; /* Ajusta a largura do card para caber na tela */
+    margin: 0 auto; /* Centraliza o card horizontalmente */
+    height: auto;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }

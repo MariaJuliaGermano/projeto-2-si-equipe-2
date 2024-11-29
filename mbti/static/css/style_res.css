@@ -40,14 +40,7 @@
     color: #000;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    font-size: 0.9rem;
-    margin-top: auto;
-    border-top: 1px solid #ddd;
-}
+
 
 body {
     font-family: 'Poppins', sans-serif;

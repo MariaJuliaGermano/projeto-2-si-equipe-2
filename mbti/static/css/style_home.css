@@ -181,3 +181,83 @@ body {
     transition: width 0.4s ease;
 }
 
+/* Responsividade para telas menores que 768px */
+@media (max-width: 768px) {
+    /* Ajusta a seção de informações (info-section) */
+    .info-section {
+        flex-direction: column; /* Empilha as caixas verticalmente */
+        padding: 1rem;
+    }
+
+    .info-box {
+        width: 100%; /* Ocupa toda a largura disponível */
+        margin-bottom: 1rem;
+    }
+
+    /* Ajusta a navegação */
+    .navbar-nav .nav-link {
+        font-size: 0.9rem; /* Diminui o tamanho do texto */
+        padding: 0 10px;
+    }
+
+    .navbar-icons {
+        flex-direction: column; /* Empilha os ícones */
+    }
+
+    .icon-link {
+        font-size: 0.9rem; /* Diminui o tamanho da fonte */
+        margin-bottom: 10px;
+    }
+
+    /* Header */
+    .section-green {
+        padding: 40px 20px; /* Reduz o espaçamento */
+    }
+
+    .section-title {
+        font-size: 1.8em; /* Reduz o tamanho da fonte */
+    }
+
+    .section-subtext {
+        font-size: 1rem; /* Ajusta o subtítulo */
+    }
+
+    /* Question Section */
+    .question-section {
+        padding: 2rem 1rem; /* Reduz o espaçamento geral */
+    }
+
+    .options {
+        flex-direction: column; /* Empilha as opções */
+        gap: 0.5rem;
+    }
+
+    .btn-next {
+        width: 100%; /* Botão ocupa toda a largura */
+        padding: 0.8rem; /* Aumenta a área clicável */
+    }
+
+    /* Barra de progresso */
+    .progress-container {
+        width: 90%; /* Ocupa quase toda a largura disponível */
+    }
+}
+
+/* Responsividade para telas menores que 480px */
+@media (max-width: 480px) {
+    .info-box h5 {
+        font-size: 1rem; /* Reduz o tamanho do título */
+    }
+
+    .info-box p {
+        font-size: 0.9rem; /* Reduz o tamanho do texto */
+    }
+
+    .progress-container {
+        height: 15px; /* Reduz a altura da barra */
+    }
+
+    .progress-bar {
+        background-color: #3ba569; /* Ajusta a cor para melhor contraste */
+    }
+}
