@@ -149,3 +149,24 @@ body {
     padding: 6px 12px;
   }
 }
+
+.footer-elegante {
+  background-color: #ffffff; /* Fundo branco */
+  color: #444; /* Texto em cinza escuro */
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1rem;
+  border-top: 2px solid #3ba569; /* Borda superior em verde suave */
+}
+
+.footer-elegante a {
+  color: #3ba569; /* Link verde suave */
+  font-weight: 500; /* Negrito leve */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-elegante a:hover {
+  color: #27693e; /* Verde mais escuro ao passar o mouse */
+  text-decoration: underline;
+}
