@@ -7,14 +7,20 @@ let data = JSON.parse(document.getElementById('received_data').textContent);
 let count = 0;
 
 function nextQuestion() {
-    count++
-    document.getElementById("counter-bar").style.width = (count/48)*100+"%"
-    document.getElementById("counter").innerHTML = count+"/48"
+    console.log("isso é um teste")
     if (document.getElementById("answer-left").checked) {
         form_data.push(Object.keys(data.questions[currentQuestion].responses)[0])
     } else if (document.getElementById("answer-right").checked) {
         form_data.push(Object.keys(data.questions[currentQuestion].responses)[1])
+    } else{
+        alert("selecione uma das alternativas para avançar para a próxima pergunta")
+        return 0
     }
+    console.log("teste")
+    count++
+    document.getElementById("counter-bar").style.width = (count/48)*100+"%"
+    document.getElementById("counter").innerHTML = count+"/48"
+
     currentAnswer++
     let a1 = Object.values(data.questions[currentQuestion].responses)[0]
     let a2 = Object.values(data.questions[currentQuestion].responses)[1]
