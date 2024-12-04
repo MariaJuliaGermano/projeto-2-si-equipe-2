@@ -75,7 +75,18 @@
                     <p><strong>Esse famoso tem a mesma personalidade que você!   --></strong></p>
                 </div>
                 <div class="col-md-4 text-center">
-                    <img src="{% static 'img/drake.jpeg' %}" alt="Imagem de personalidade" class="img-fluid rounded famous-img">
+                    {% if NF %}
+                        <img src="{% static 'img/shakespeare.jpg' %}" alt="Imagem de personalidade" class="img-fluid rounded">
+                    {% endif %}
+                    {% if SJ %}
+                        <img src="{% static 'img/cazuza.jpg' %}" alt="Imagem de personalidade" class="img-fluid rounded">
+                    {% endif %}
+                    {% if SP %}
+                        <img src="{% static 'img/michael_jordan.jpg' %}" alt="Imagem de personalidade" class="img-fluid rounded">
+                    {% endif %}
+                    {% if NT %}
+                        <img src="{% static 'img/alceu_valenca.jpg' %}" alt="Imagem de personalidade" class="img-fluid rounded">
+                    {% endif %}
                 </div>
             </div>
             <div class="mt-4">

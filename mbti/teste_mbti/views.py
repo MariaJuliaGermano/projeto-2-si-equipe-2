@@ -173,25 +173,29 @@ def results(request):
                         context = {
                             'perfil':"GUARDIÃO", 
                             'sigla': "SJ",
-                            'descrição': "Concreto e cooperativo, procura segurança, está preocupados com a responsabilidade e dever. Sua maior força é a logística. Seu ponto forte é organização. É excelente em facilitar (para os demais), verificar (serviço dos demais) e dar apoio em geral."
+                            'descrição': "Concreto e cooperativo, procura segurança, está preocupados com a responsabilidade e dever. Sua maior força é a logística. Seu ponto forte é organização. É excelente em facilitar (para os demais), verificar (serviço dos demais) e dar apoio em geral.",
+                            'SJ': True
                             }
                     elif perfil == "SP":
                         context = {
                             'perfil':"ARTESÃO", 
                             'sigla': "SP",
-                            'descrição': "Concreto e pragmático, procura estimulação e preocupa-se em causar impacto. Sua maior força é a tática. É excelentes na resolução de problemas, agilidade, manipulação de ferramentas, instrumentos e equipamentos."
+                            'descrição': "Concreto e pragmático, procura estimulação e preocupa-se em causar impacto. Sua maior força é a tática. É excelentes na resolução de problemas, agilidade, manipulação de ferramentas, instrumentos e equipamentos.",
+                            'SP': True
                             }
                     elif perfil == "NF":
                         context = {
                             'perfil':"IDEALISTA", 
                             'sigla': "NF",
-                            'descrição': "Abstrato e cooperativo, procura significado e importância, se preocupa com crescimento pessoal e encontrar sua própria identidade. Sua maior força é a diplomacia. Destaca-se por deixar situações mais claras e inspirar pessoas."
+                            'descrição': "Abstrato e cooperativo, procura significado e importância, se preocupa com crescimento pessoal e encontrar sua própria identidade. Sua maior força é a diplomacia. Destaca-se por deixar situações mais claras e inspirar pessoas.",
+                            'NF': True
                             }
                     elif perfil == "NT":
                         context = context = {
                             'perfil':"RACIONAL", 
                             'sigla': "NT",
-                            'descrição': "Abstrato e pragmático, procura maestria e autocontrole. Se preocupa com o próprio conhecimento e competência. Sua maior força é a estratégia. Destacam-se em investigações lógicas como engenharia, conceitos, teorias e coordenação."
+                            'descrição': "Abstrato e pragmático, procura maestria e autocontrole. Se preocupa com o próprio conhecimento e competência. Sua maior força é a estratégia. Destacam-se em investigações lógicas como engenharia, conceitos, teorias e coordenação.",
+                            'NT': True
                             }
                         
                     pergunta_1 = list(tabela.pergunta_1)
