@@ -151,7 +151,3 @@ body {
     transition: color 0.3s ease;
 }
 
-.footer-elegante a:hover {
-    color: #27693e; /* Verde mais escuro ao passar o mouse */
-    text-decoration: underline;
-}
