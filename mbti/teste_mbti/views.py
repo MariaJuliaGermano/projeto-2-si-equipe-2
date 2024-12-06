@@ -211,7 +211,7 @@ def results(request):
                     analitico = (len_T / 13) * 100
 
                     pergunta_4 = list(tabela.pergunta_4)
-                    len_J = pergunta_4.count("E")
+                    len_J = pergunta_4.count("J")
                     planejador = (len_J / 13) * 100
 
                     len_P = pergunta_4.count("P")
