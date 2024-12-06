@@ -6,8 +6,18 @@ let form_data = []
 let data = JSON.parse(document.getElementById('received_data').textContent);
 let count = 0;
 
+function lastQuestion() {
+    form_data.pop()
+    count--
+    document.getElementById("counter-bar").style.width = (count/48)*100+"%"
+    document.getElementById("counter").innerHTML = count+"/48"
+    currentAnswer--
+    document.getElementById("answer-text-left").innerHTML = a1[currentAnswer]
+    document.getElementById("answer-text-right").innerHTML = a2[currentAnswer]
+    console.log(form_data)
+}
+
 function nextQuestion() {
-    console.log("isso é um teste")
     if (document.getElementById("answer-left").checked) {
         form_data.push(Object.keys(data.questions[currentQuestion].responses)[0])
     } else if (document.getElementById("answer-right").checked) {
@@ -16,7 +26,6 @@ function nextQuestion() {
         alert("selecione uma das alternativas para avançar para a próxima pergunta")
         return 0
     }
-    console.log("teste")
     count++
     document.getElementById("counter-bar").style.width = (count/48)*100+"%"
     document.getElementById("counter").innerHTML = count+"/48"
@@ -41,6 +50,7 @@ function nextQuestion() {
         document.getElementById("answer-text-left").innerHTML = a1[currentAnswer]
         document.getElementById("answer-text-right").innerHTML = a2[currentAnswer]
     }
+    console.log(form_data)
 }
 
 // Função para inicializar a visibilidade das perguntas ao carregar a página
