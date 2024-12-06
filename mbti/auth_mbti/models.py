@@ -36,3 +36,7 @@ class Aluno(models.Model):
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE, related_name="alunos", null=True)
     email = models.EmailField(null=True, max_length=254)  # Garantir emails únicos
     ra = models.CharField(max_length=10, unique=True, default=generate_unique_ra)
+
+class arquivosExel(models.Model):
+    id = models.AutoField(primary_key=True)
+    arquivo = models.FileField(upload_to='documentos/')

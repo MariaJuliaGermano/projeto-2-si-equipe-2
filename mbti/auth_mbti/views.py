@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .form import formCadastro, formLogin
 from .models import cadastro as table
 from teste_mbti.models import respostas
 from hashlib import sha256, sha512
+from auth_mbti.models import arquivosExel
+import pandas
 
 def cadastro(request):
 
@@ -102,6 +104,43 @@ def verificarLogin(request):
             }
         return render(request, 'auth_mbti/login.html', context)
     
+def importExel(request):
+
+    pathArquivo = request.POST.get('resposta')
+
+    database = pandas.read_excel(pathArquivo)
+
+    for idx, linha  in database.iterrows():
+        email = linha['email institucional']
+
+        try:
+            user = table.objects.get(email=email)
+        
+        except:
+
+            perfil = table()
+            perfil.nome_completo = linha['nome completo'] 
+            perfil.turma = linha['turma']
+            perfil.email = email
+
+            senha = '0000'
+            senha_hash = sha256(senha.encode()).hexdigest()
+            perfil.senha = senha_hash
+
+            perfil.curso = linha['curso']
+            perfil.save()
+            
+    return HttpResponse('cadastro realizado com sucesso!')
+
+# def verificarConfirmacao(request):
+#     senha = request.POST.get('senha')
+
+#     if senha == 'senha de confirmação':
+#         return render(request, 'auth_mbti/cadExel.html')
+    
+#     else:
+#         return render(request, 'auth_mbti/confirmacao.html')
+    
 #===================== Views =====================
 
 def cadastrar(request):
@@ -129,3 +168,29 @@ def login(request):
 
 def logout(request):
       return render(request, 'auth_mbti/logout.html')
+
+def cadExel(request):
+
+    if request.method == 'GET':
+        arquivos =  arquivosExel.objects.values_list('arquivo', flat=True)
+        context = {'arquivos': arquivos}
+
+        return render(request, 'auth_mbti/cadExel.html', context)
+
+    elif request.method == 'POST':
+        return importExel(request)
+        
+# def confirmacao(request):
+
+#     if request.method == 'GET':
+#         return render(request, 'auth_mbti/confirmacao.html')
+    
+#     elif request.method == 'POST':
+#         senha = request.POST.get('senha')
+
+#         if senha == 'senha de confirmação':
+#             return render(request, 'auth_mbti/cadExel.html')
+        
+#         else:
+#             return render(request, 'auth_mbti/confirmacao.html')
+    

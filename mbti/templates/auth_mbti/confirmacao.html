@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confirmacao</title>
+</head>
+<body>
+    <h1>Digite a sua senha de confirmação</h1>
+    <form action="{% url 'cadExcel' %}" method="post">
+        {% csrf_token %}
+        <input type="password" name="senha" placeholder="digite aqui a sua senha">
+        <input type="submit" value="confirmar">
+    </form>
+</body>
+</html>

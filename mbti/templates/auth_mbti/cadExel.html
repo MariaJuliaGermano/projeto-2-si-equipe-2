@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Exel</title>
+</head>
+<body>
+    {% if arquivos %}
+        <h1>selecione um arquivo para realizar a importação:</h1>
+        <form action="{% url 'cadExcel' %}" method="post">
+            {% csrf_token %}
+            <h3>Arquivos disponíveis:</h3>
+            {% for arquivo in arquivos %}
+                <input type="radio" name="resposta" id="{{ arquivo }}" value="{{ arquivo }}">
+                <label for="{{ arquivo }}">{{ arquivo }}</label><br>
+            {% endfor %}
+            <input type="submit" value="realizar importação" style="margin-top: 15px;">
+        </form>
+    {% else %}
+        <h1>Nenhum arquivo disponível :(</h1>
+    {% endif %}
+</body>
+</html>
