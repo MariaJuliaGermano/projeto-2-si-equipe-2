@@ -45,7 +45,6 @@ function nextQuestion() {
 
 // Função para inicializar a visibilidade das perguntas ao carregar a página
 function initializeQuestions() {
-    document.getElementById("question-number").innerHTML = "Questão "+(currentQuestion + 1)
     document.getElementById("question-title").innerHTML = data.questions[currentQuestion].question
     let a1 = Object.values(data.questions[currentQuestion].responses)[0]
     let a2 = Object.values(data.questions[currentQuestion].responses)[1]
