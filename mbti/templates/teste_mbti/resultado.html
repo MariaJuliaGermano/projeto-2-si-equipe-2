@@ -127,17 +127,17 @@
             <div class="text-center-mt-4">
                 <p>Curtiu? <br> Então avalie nosso site!</p>
                 <div class="stars">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
+                    <span onclick="changeStar(1);" id="star1" class="star">&#9733;</span>
+                    <span onclick="changeStar(2);" id="star2" class="star">&#9733;</span>
+                    <span onclick="changeStar(3);" id="star3" class="star">&#9733;</span>
+                    <span onclick="changeStar(4);" id="star4" class="star">&#9733;</span>
+                    <span onclick="changeStar(5);" id="star5" class="star">&#9733;</span>
                 </div>
             
                 <!-- Área de comentários -->
                 <form class="comentarios" action="{% url 'feedback' %}" method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="stars" value="">
+                    <input type="hidden" name="stars_value" id="stars_value">
                     <textarea name="comentario" placeholder="Deixe seu comentário aqui..." rows="4"></textarea>
                     <button type="submit" id="enviarComentario">Enviar</button>
                 </form>
@@ -150,6 +150,7 @@
 
         </div>
 
+    <script src="{% static 'js/stars.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
