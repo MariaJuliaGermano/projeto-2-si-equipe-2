@@ -21,10 +21,11 @@ def feedback(request):
         
         if logado == 'True':
             comentario = request.POST['comentario']
+            star_value = request.POST['stars_value']
+            print(star_value)
             # Estrelas ainda não foram implementadas
-            star = 5
             feedback_table = feedbackmbti()
-            feedback_table.stars = star
+            feedback_table.stars = star_value
             feedback_table.comment = comentario
             emails = cadastro.objects.values_list('email', flat=True)
 
